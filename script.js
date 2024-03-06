@@ -33,6 +33,7 @@ document.addEventListener('keydown', function (e) {
 // //////////////////////////////////////////////////////////////////////////
 // //////////////////////////////////////////////////////////////////////////
 
+/*
 // Selecting Elements
 console.log(document.documentElement);
 console.log(document.head);
@@ -117,3 +118,39 @@ logo.classList.contains(`c`); // contains but not includes
 // Do not use this as it would override all the existing classes
 // it will also allow us to only put one class on any element
 logo.className = 'Durell';
+*/
+const btnScrollTo = document.querySelector('.btn--scroll-to');
+const section1 = document.querySelector('#section--1');
+
+btnScrollTo.addEventListener('click', function (e) {
+  const s1coords = section1.getBoundingClientRect();
+  console.log(s1coords);
+
+  // console.log(e.target.getBoundingClientRect());
+
+  console.log('Current scroll (X/Y)', window.pageXOffset, window.pageYOffset);
+
+  console.log(
+    'height/width viewport',
+    document.documentElement.clientHeight,
+    document.documentElement.clientWidth
+  );
+
+  // Scrolling
+  console.log(s1coords.left, s1coords.top);
+  console.log(window.pageXOffset, window.pageYOffset);
+  // window.scrollTo(s1coords.x, s1coords.y);
+
+  // window.scrollTo(
+  //   s1coords.x + window.pageXOffset,
+  //   s1coords.y + window.pageYOffset
+  // );
+
+  // window.scrollTo({
+  //   left: s1coords.x + window.pageXOffset,
+  //   top: s1coords.y + window.pageYOffset,
+  //   behavior: 'smooth',
+  // });
+
+  section1.scrollIntoView({ behavior: 'smooth' }); // for modern buttons
+});
